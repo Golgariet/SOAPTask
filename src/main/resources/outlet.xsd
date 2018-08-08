@@ -1,0 +1,75 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+   <xs:element name="getWarehouseRequest">
+           <xs:complexType>
+               <xs:sequence>
+                   <xs:element name="id" type="xs:string"/>
+                   <xs:element name="price" type="xs:float"/>
+                   <xs:element name="used" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+               </xs:sequence>
+           </xs:complexType>
+       </xs:element>
+
+       <xs:element name="getWarehouseResponse">
+           <xs:complexType>
+               <xs:sequence>
+                   <xs:element name="status" type="tns:status"/>
+               </xs:sequence>
+           </xs:complexType>
+       </xs:element>
+
+       <xs:complexType name="status">
+           <xs:sequence>
+               <xs:element name="id" type="xs:string"/>
+               <xs:element name="price" type="xs:float"/>
+               <xs:element name="code" type="xs:int"/>
+               <xs:element name="warehouse" type="tns:warehouse" minOccurs="0" maxOccurs="1"/>
+           </xs:sequence>
+       </xs:complexType>
+
+       <xs:simpleType name="warehouse">
+           <xs:restriction base="xs:string">
+               <xs:enumeration value="A"/>
+               <xs:enumeration value="B"/>
+               <xs:enumeration value="C"/>
+           </xs:restriction>
+       </xs:simpleType>
+
+
+<!--
+
+    <xs:element name="getWarehouseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getWarehouseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="order">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="code" type="xs:int"/>
+            <xs:element name="warehouse" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="status">
+        <xs:sequence>
+            <xs:element name="code" type="xs:int"/>
+            <xs:element name="warehouse" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType> -->
+
+
+</xs:schema>
+
